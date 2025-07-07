@@ -8,6 +8,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { getDatabaseConfig } from './config/database.config';
 import { TokenModule } from './common/token/token.modue';
 import { UserModule } from './user/user.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { UserModule } from './user/user.module';
     TokenModule,
     AuthModule,
     UserModule,
+    ProductModule,
   ],
   providers: [AppService],
 })
