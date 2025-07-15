@@ -10,8 +10,7 @@ import { TokenSevice } from 'src/common/token/token.service';
 export class UserService {
 
   constructor(
-    @InjectRepository(User)
-    private userTable: Repository<User>
+    @InjectRepository(User) private userTable: Repository<User>
   ) { }
 
   create(createUserDto: CreateUserDto) {
@@ -32,9 +31,9 @@ export class UserService {
         message: "User fetched successsfully",
         user: userWithOutPassword
       }
-    }else{
+    } else {
       throw new NotFoundException({
-        message : "User not found "
+        message: "User not found "
       })
     }
 

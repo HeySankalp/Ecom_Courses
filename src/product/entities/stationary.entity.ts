@@ -1,8 +1,8 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 export type productType = "1" | "2";
-@Entity('products')
-export class Product {
+@Entity('stationary')
+export class Stationary {
     @PrimaryGeneratedColumn()
     id: number;
 
