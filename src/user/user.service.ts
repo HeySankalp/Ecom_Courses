@@ -8,10 +8,7 @@ import { TokenSevice } from 'src/common/token/token.service';
 
 @Injectable()
 export class UserService {
-
-  constructor(
-    @InjectRepository(User) private userTable: Repository<User>
-  ) { }
+  constructor(@InjectRepository(User) private userTable: Repository<User>) {}
 
   create(createUserDto: CreateUserDto) {
     return 'This action adds a new user';
@@ -22,22 +19,20 @@ export class UserService {
   }
 
   async getUserById(id: number) {
-
     const userExists = await this.userTable.findOneBy({ id });
 
     if (userExists) {
-      const { password, createdAt, updatedAt, ...userWithOutPassword } = userExists;
+      const { password, createdAt, updatedAt, ...userWithOutPassword } =
+        userExists;
       return {
-        message: "User fetched successsfully",
-        user: userWithOutPassword
-      }
+        message: 'User fetched successsfully',
+        user: userWithOutPassword,
+      };
     } else {
       throw new NotFoundException({
-        message: "User not found "
-      })
+        message: 'User not found ',
+      });
     }
-
-
 
     return `This action returns a #${id} user`;
   }

@@ -1,26 +1,39 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-
-export type productType = "1" | "2";
+import { ProductTypeEnum } from 'src/Enums/ProductEnumClass';
+import { PackageProduct } from 'src/package/entities/packageProduct.entity';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 @Entity('products')
 export class Product {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column({ type: 'varchar', length: 200 })
-    name: string;
+  @Column({ type: 'varchar', length: 200 })
+  name: string;
 
-    @Column({ type: 'enum', enum: ['1', '2'], })
-    productType: productType;
+  @Column({ type: 'enum', enum: ProductTypeEnum, nullable: true })
+  productType: ProductTypeEnum;
 
-    @Column()
-    refId: number;
+  @Column({ nullable: true })
+  refId: number;
 
-    @Column({ type: "numeric", precision: 10, scale: 2 })
-    price: number;
+  @Column({ type: 'numeric', precision: 10, scale: 2 })
+  price: number;
 
-    @CreateDateColumn()
-    createdAt: Date;
+  @Column({ type: 'numeric', default: 0 })
+  stock: number;
 
-    @UpdateDateColumn()
-    updatedAt: Date;
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+
+  @OneToMany(() => PackageProduct, (pp) => pp.product)
+  packageProducts: PackageProduct[];
 }

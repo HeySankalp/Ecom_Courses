@@ -18,7 +18,7 @@ import { ApiBearerAuth } from '@nestjs/swagger';
 @UseGuards(AuthGuard('jwt'))
 @Controller('user')
 export class UserController {
-  constructor(private readonly userService: UserService) { }
+  constructor(private readonly userService: UserService) {}
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
@@ -31,8 +31,7 @@ export class UserController {
   }
 
   @Get(':id')
-  getUserById(@Param('id') id: string
-  ) {
+  getUserById(@Param('id') id: string) {
     return this.userService.getUserById(+id);
   }
 

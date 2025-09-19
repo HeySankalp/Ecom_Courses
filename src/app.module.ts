@@ -9,6 +9,7 @@ import { getDatabaseConfig } from './config/database.config';
 import { TokenModule } from './common/token/token.modue';
 import { UserModule } from './user/user.module';
 import { ProductModule } from './product/product.module';
+import { PackageModule } from './package/package.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { ProductModule } from './product/product.module';
     AuthModule,
     UserModule,
     ProductModule,
+    PackageModule,
   ],
   providers: [AppService],
 })

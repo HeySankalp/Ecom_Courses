@@ -10,4 +10,4 @@ import { JwtStrategy } from 'src/common/token/jwt.strategy';
   controllers: [UserController],
   providers: [UserService, JwtStrategy],
 })
-export class UserModule {  }
+export class UserModule {}

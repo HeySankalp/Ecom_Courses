@@ -1,15 +1,21 @@
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { Book } from "./book.entity";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { Book } from './book.entity';
 
-@Entity('classes')
-export class Classes {
-    @PrimaryGeneratedColumn()
-    id: number;
+@Entity('class')
+export class Class {
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column({ type: "varchar", unique: true, length: 50 })
-    name: string;
+  @Column({ type: 'varchar', unique: true, length: 50 })
+  name: string;
 
-    @OneToMany(() => Book, book => book.class)
-    books: Book[];
-
+  @OneToMany(() => Book, (book) => book.class)
+  books: Book[];
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Headers, Post } from '@nestjs/common';
 import { Authservice } from './auth.service';
 import { SignupDto } from './dto/signup.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -18,5 +18,12 @@ export class AuthController {
   @Post('login')
   login(@Body() body: LoginDto) {
     return this.authservices.login(body);
+  }
+
+  @Get('fetchtoken')
+  fetchtoken(@Headers('token') authHeader: string) {
+    console.log(authHeader);
+
+    return this.authservices.fetchtoken(authHeader);
   }
 }
